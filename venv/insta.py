@@ -49,12 +49,10 @@ class InstaBot:
         #bot.scroll()
         sleep(2)
         # print(self.driver.find_element_by_xpath("//button[contains(text() , 'Follow')]"))
-        while(self.driver.find_element_by_xpath("//button[contains(text() , 'Follow')]") != ""):
+        for i in range(20):
             self.driver.find_element_by_xpath("//button[contains(text() , 'Follow')]") \
                 .click()
-            sleep(2)
-            self.driver.find_element_by_xpath("//button[contains(text() , 'Cancel')]") \
-                .click()
+            sleep(3)
 
 
 
