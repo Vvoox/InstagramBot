@@ -44,11 +44,18 @@ class InstaBot:
             self.driver.find_element_by_xpath("//button[contains(text(),'Unfollow')]") \
                 .click()
     def follow(self):
+        self.driver.get("https://www.instagram.com/explore/people/suggested/")
+        sleep(2)
+        #bot.scroll()
+        sleep(2)
+        # print(self.driver.find_element_by_xpath("//button[contains(text() , 'Follow')]"))
+        while(self.driver.find_element_by_xpath("//button[contains(text() , 'Follow')]") != ""):
+            self.driver.find_element_by_xpath("//button[contains(text() , 'Follow')]") \
+                .click()
+            sleep(2)
+            self.driver.find_element_by_xpath("//button[contains(text() , 'Cancel')]") \
+                .click()
 
-        self.driver.find_element_by_xpath("//a[contains(@href,'/explore/people/')]") \
-            .click()
-        self.driver.find_element_by_xpath("//button[contains(@class , 'sqdOP  L3NKy   y3zKF'")\
-            .click()
 
 
 
@@ -68,7 +75,23 @@ class InstaBot:
         # not_following_back = [user for user in following if user not in followers]
         # print(not_following_back)
         # print(followi
-
+    def scroll(self):
+        sleep(2)
+        sugs = self.driver.find_element_by_xpath("//div[contains(@class,'dL3lC')]")
+        self.driver.execute_script('arguments[0].scrollIntoView()', sugs)
+        sleep(2)
+        scroll_box = self.driver.find_element_by_xpath("/html/body/div[1]/section/main/div")
+        last_ht, ht = 0, 1
+        while last_ht != ht:
+            try:
+                last_ht = ht
+                sleep(1)
+                ht = self.driver.execute_script("""
+                        arguments[0].scrollTo(0, arguments[0].scrollHeight);
+                        return arguments[0].scrollHeight;
+                        """, scroll_box)
+            except IOError:
+                print("done")
     def _get_names(self):
         sleep(2)
         sugs = self.driver.find_element_by_xpath("//ul[contains(@class,'jSC57  _6xe7A')]")
