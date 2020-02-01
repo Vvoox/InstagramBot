@@ -117,6 +117,6 @@ class InstaBot:
         # return names
 
 
-bot=InstaBot('pluton9', '067036987-khalil')
+bot=InstaBot('Email', 'Password')
 # bot.unfollow()
 bot.follow()
