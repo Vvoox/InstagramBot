@@ -45,21 +45,13 @@ class InstaBot:
                 .click()
     def follow(self):
         self.driver.get("https://www.instagram.com/explore/people/suggested/")
-        sleep(2)
+        sleep(3)
         #bot.scroll()
-        sleep(2)
         # print(self.driver.find_element_by_xpath("//button[contains(text() , 'Follow')]"))
-        for i in range(20):
+        while(1):
             self.driver.find_element_by_xpath("//button[contains(text() , 'Follow')]") \
                 .click()
-            sleep(3)
-
-
-
-
-
-
-
+            sleep(10)
         # self.driver.find_element_by_xpath("//ul[contains(@class,'jSC57  _6xe7A')]")
         # self.driver.find_element_by_xpath("/html/body/div[4]/div/div[2]/ul/div/li[1]/div/div[2]")\
         #     .click()
